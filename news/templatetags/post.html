@@ -1,0 +1,15 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %} <!-- И здесь тоже загружаем -->
+
+{% block title %}
+{{ post.title|censor }}
+{% endblock title %}
+
+{% block content %}
+    <h1>{{ post.title|censor }}</h1>
+    <p><em>Дата публикации: {{ post.post_time|date:'d.m.Y' }}</em></p>
+    <hr>
+    <!-- Применяем фильтр к полному тексту статьи -->
+    <p>{{ post.text|censor }}</p>
+{% endblock content %}
